@@ -1,0 +1,1505 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0445,
+          40.6892
+        ]
+      },
+      "properties": {
+        "rank": 1,
+        "name": "Statue of Liberty",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9857,
+          40.7484
+        ]
+      },
+      "properties": {
+        "rank": 2,
+        "name": "Empire State Building",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9654,
+          40.7829
+        ]
+      },
+      "properties": {
+        "rank": 3,
+        "name": "Central Park",
+        "category": "Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9855,
+          40.758
+        ]
+      },
+      "properties": {
+        "rank": 4,
+        "name": "Times Square",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4783,
+          37.8199
+        ]
+      },
+      "properties": {
+        "rank": 5,
+        "name": "Golden Gate Bridge",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.1129,
+          36.1069
+        ]
+      },
+      "properties": {
+        "rank": 6,
+        "name": "Grand Canyon",
+        "category": "Natural Wonder"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.919,
+          33.8121
+        ]
+      },
+      "properties": {
+        "rank": 7,
+        "name": "Disneyland",
+        "category": "Theme Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5639,
+          28.3852
+        ]
+      },
+      "properties": {
+        "rank": 8,
+        "name": "Walt Disney World",
+        "category": "Theme Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.5885,
+          44.428
+        ]
+      },
+      "properties": {
+        "rank": 9,
+        "name": "Yellowstone National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.5383,
+          37.8651
+        ]
+      },
+      "properties": {
+        "rank": 10,
+        "name": "Yosemite National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3215,
+          34.1341
+        ]
+      },
+      "properties": {
+        "rank": 11,
+        "name": "Hollywood Sign",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1728,
+          36.1147
+        ]
+      },
+      "properties": {
+        "rank": 12,
+        "name": "Las Vegas Strip",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0377,
+          43.0962
+        ]
+      },
+      "properties": {
+        "rank": 13,
+        "name": "Niagara Falls",
+        "category": "Natural Wonder"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.4591,
+          43.8791
+        ]
+      },
+      "properties": {
+        "rank": 14,
+        "name": "Mount Rushmore",
+        "category": "Monument"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0365,
+          38.8977
+        ]
+      },
+      "properties": {
+        "rank": 15,
+        "name": "White House",
+        "category": "Government"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0091,
+          38.8899
+        ]
+      },
+      "properties": {
+        "rank": 16,
+        "name": "US Capitol",
+        "category": "Government"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0353,
+          38.8895
+        ]
+      },
+      "properties": {
+        "rank": 17,
+        "name": "National Mall",
+        "category": "Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.026,
+          38.8889
+        ]
+      },
+      "properties": {
+        "rank": 18,
+        "name": "Smithsonian Castle",
+        "category": "Cultural"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9969,
+          40.7061
+        ]
+      },
+      "properties": {
+        "rank": 19,
+        "name": "Brooklyn Bridge",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.423,
+          37.8267
+        ]
+      },
+      "properties": {
+        "rank": 20,
+        "name": "Alcatraz Island",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4177,
+          37.808
+        ]
+      },
+      "properties": {
+        "rank": 21,
+        "name": "Fisherman's Wharf",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3493,
+          47.6205
+        ]
+      },
+      "properties": {
+        "rank": 22,
+        "name": "Space Needle",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3417,
+          47.6094
+        ]
+      },
+      "properties": {
+        "rank": 23,
+        "name": "Pike Place Market",
+        "category": "Market"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3004,
+          34.1184
+        ]
+      },
+      "properties": {
+        "rank": 24,
+        "name": "Griffith Observatory",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4962,
+          34.01
+        ]
+      },
+      "properties": {
+        "rank": 25,
+        "name": "Santa Monica Pier",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3534,
+          34.1381
+        ]
+      },
+      "properties": {
+        "rank": 26,
+        "name": "Universal Studios Hollywood",
+        "category": "Theme Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1728,
+          36.1126
+        ]
+      },
+      "properties": {
+        "rank": 27,
+        "name": "Times Square Las Vegas",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.4861,
+          29.426
+        ]
+      },
+      "properties": {
+        "rank": 28,
+        "name": "The Alamo",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.0644,
+          29.9584
+        ]
+      },
+      "properties": {
+        "rank": 29,
+        "name": "French Quarter",
+        "category": "Historic District"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.0633,
+          29.9419
+        ]
+      },
+      "properties": {
+        "rank": 30,
+        "name": "Mardi Gras World",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8987,
+          25.2866
+        ]
+      },
+      "properties": {
+        "rank": 31,
+        "name": "Everglades National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.7971,
+          24.5465
+        ]
+      },
+      "properties": {
+        "rank": 32,
+        "name": "Key West Southernmost Point",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.649,
+          28.5729
+        ]
+      },
+      "properties": {
+        "rank": 33,
+        "name": "Kennedy Space Center",
+        "category": "Space"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.7603,
+          46.8523
+        ]
+      },
+      "properties": {
+        "rank": 34,
+        "name": "Mount Rainier",
+        "category": "Mountain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.6044,
+          47.8021
+        ]
+      },
+      "properties": {
+        "rank": 35,
+        "name": "Olympic National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.0263,
+          37.2982
+        ]
+      },
+      "properties": {
+        "rank": 36,
+        "name": "Zion National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.1871,
+          37.593
+        ]
+      },
+      "properties": {
+        "rank": 37,
+        "name": "Bryce Canyon",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.5925,
+          38.7331
+        ]
+      },
+      "properties": {
+        "rank": 38,
+        "name": "Arches National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.0987,
+          36.998
+        ]
+      },
+      "properties": {
+        "rank": 39,
+        "name": "Monument Valley",
+        "category": "Natural Wonder"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.3743,
+          36.8619
+        ]
+      },
+      "properties": {
+        "rank": 40,
+        "name": "Antelope Canyon",
+        "category": "Natural Wonder"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.7609,
+          34.8697
+        ]
+      },
+      "properties": {
+        "rank": 41,
+        "name": "Sedona Red Rocks",
+        "category": "Natural Wonder"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.7377,
+          36.0162
+        ]
+      },
+      "properties": {
+        "rank": 42,
+        "name": "Hoover Dam",
+        "category": "Engineering"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.0324,
+          39.0968
+        ]
+      },
+      "properties": {
+        "rank": 43,
+        "name": "Lake Tahoe",
+        "category": "Natural Wonder"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8563,
+          36.3615
+        ]
+      },
+      "properties": {
+        "rank": 44,
+        "name": "Big Sur",
+        "category": "Scenic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9325,
+          36.5323
+        ]
+      },
+      "properties": {
+        "rank": 45,
+        "name": "Death Valley",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.901,
+          33.8734
+        ]
+      },
+      "properties": {
+        "rank": 46,
+        "name": "Joshua Tree National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.1739,
+          33.6803
+        ]
+      },
+      "properties": {
+        "rank": 47,
+        "name": "Coachella Valley",
+        "category": "Scenic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.149,
+          32.7353
+        ]
+      },
+      "properties": {
+        "rank": 48,
+        "name": "San Diego Zoo",
+        "category": "Zoo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1467,
+          32.7311
+        ]
+      },
+      "properties": {
+        "rank": 49,
+        "name": "Balboa Park",
+        "category": "Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -157.95,
+          21.3656
+        ]
+      },
+      "properties": {
+        "rank": 50,
+        "name": "Pearl Harbor",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -157.8289,
+          21.2767
+        ]
+      },
+      "properties": {
+        "rank": 51,
+        "name": "Waikiki Beach",
+        "category": "Beach"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -156.1552,
+          20.7204
+        ]
+      },
+      "properties": {
+        "rank": 52,
+        "name": "Haleakal\u0101 National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.2885,
+          19.4194
+        ]
+      },
+      "properties": {
+        "rank": 53,
+        "name": "Volcanoes National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.1926,
+          63.1148
+        ]
+      },
+      "properties": {
+        "rank": 54,
+        "name": "Denali National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.787,
+          48.7596
+        ]
+      },
+      "properties": {
+        "rank": 55,
+        "name": "Glacier National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.3397,
+          43.8554
+        ]
+      },
+      "properties": {
+        "rank": 56,
+        "name": "Badlands National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.6959,
+          45.3735
+        ]
+      },
+      "properties": {
+        "rank": 57,
+        "name": "Mount Hood",
+        "category": "Mountain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.109,
+          42.9446
+        ]
+      },
+      "properties": {
+        "rank": 58,
+        "name": "Crater Lake",
+        "category": "Lake"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.73,
+          45.725
+        ]
+      },
+      "properties": {
+        "rank": 59,
+        "name": "Columbia River Gorge",
+        "category": "Scenic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1158,
+          45.5762
+        ]
+      },
+      "properties": {
+        "rank": 60,
+        "name": "Multnomah Falls",
+        "category": "Waterfall"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6226,
+          41.8826
+        ]
+      },
+      "properties": {
+        "rank": 61,
+        "name": "Chicago Millennium Park",
+        "category": "Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6359,
+          41.8789
+        ]
+      },
+      "properties": {
+        "rank": 62,
+        "name": "Willis Tower Skydeck",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6078,
+          41.8917
+        ]
+      },
+      "properties": {
+        "rank": 63,
+        "name": "Navy Pier",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0865,
+          38.7079
+        ]
+      },
+      "properties": {
+        "rank": 64,
+        "name": "Mount Vernon",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.7075,
+          37.2707
+        ]
+      },
+      "properties": {
+        "rank": 65,
+        "name": "Colonial Williamsburg",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4895,
+          35.6118
+        ]
+      },
+      "properties": {
+        "rank": 66,
+        "name": "Great Smoky Mountains",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5312,
+          35.7945
+        ]
+      },
+      "properties": {
+        "rank": 67,
+        "name": "Dollywood",
+        "category": "Theme Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7781,
+          36.1593
+        ]
+      },
+      "properties": {
+        "rank": 68,
+        "name": "Nashville Broadway",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.0228,
+          35.0456
+        ]
+      },
+      "properties": {
+        "rank": 69,
+        "name": "Graceland",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.1848,
+          38.6247
+        ]
+      },
+      "properties": {
+        "rank": 70,
+        "name": "Gateway Arch",
+        "category": "Monument"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2422,
+          44.8547
+        ]
+      },
+      "properties": {
+        "rank": 71,
+        "name": "Mall of America",
+        "category": "Shopping"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2651,
+          35.7596
+        ]
+      },
+      "properties": {
+        "rank": 72,
+        "name": "Mount Mitchell",
+        "category": "Mountain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4665,
+          35.5585
+        ]
+      },
+      "properties": {
+        "rank": 73,
+        "name": "Outer Banks",
+        "category": "Beach"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2962,
+          41.6688
+        ]
+      },
+      "properties": {
+        "rank": 74,
+        "name": "Cape Cod",
+        "category": "Beach"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.2733,
+          44.3386
+        ]
+      },
+      "properties": {
+        "rank": 75,
+        "name": "Acadia National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0589,
+          42.3601
+        ]
+      },
+      "properties": {
+        "rank": 76,
+        "name": "Freedom Trail",
+        "category": "Historic Trail"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0972,
+          42.3467
+        ]
+      },
+      "properties": {
+        "rank": 77,
+        "name": "Fenway Park",
+        "category": "Sports"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1167,
+          42.377
+        ]
+      },
+      "properties": {
+        "rank": 78,
+        "name": "Harvard University",
+        "category": "Cultural"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.8967,
+          42.5195
+        ]
+      },
+      "properties": {
+        "rank": 79,
+        "name": "Salem Historic District",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6502,
+          40.2859
+        ]
+      },
+      "properties": {
+        "rank": 80,
+        "name": "Hersheypark",
+        "category": "Theme Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.2311,
+          39.8309
+        ]
+      },
+      "properties": {
+        "rank": 81,
+        "name": "Gettysburg Battlefield",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.6836,
+          40.3428
+        ]
+      },
+      "properties": {
+        "rank": 82,
+        "name": "Rocky Mountain National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0423,
+          38.8409
+        ]
+      },
+      "properties": {
+        "rank": 83,
+        "name": "Pikes Peak",
+        "category": "Mountain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.4618,
+          37.2309
+        ]
+      },
+      "properties": {
+        "rank": 84,
+        "name": "Mesa Verde",
+        "category": "Historic Site"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.0452,
+          36.9991
+        ]
+      },
+      "properties": {
+        "rank": 85,
+        "name": "Four Corners Monument",
+        "category": "Landmark"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.5567,
+          32.1479
+        ]
+      },
+      "properties": {
+        "rank": 86,
+        "name": "Carlsbad Caverns",
+        "category": "Cave"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.34,
+          27.1486
+        ]
+      },
+      "properties": {
+        "rank": 87,
+        "name": "Padre Island National Seashore",
+        "category": "Beach"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.4936,
+          29.4241
+        ]
+      },
+      "properties": {
+        "rank": 88,
+        "name": "San Antonio River Walk",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.097,
+          29.5502
+        ]
+      },
+      "properties": {
+        "rank": 89,
+        "name": "Space Center Houston",
+        "category": "Space"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.2425,
+          29.1275
+        ]
+      },
+      "properties": {
+        "rank": 90,
+        "name": "Big Bend National Park",
+        "category": "National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.0589,
+          29.9636
+        ]
+      },
+      "properties": {
+        "rank": 91,
+        "name": "Frenchman Street",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.0659,
+          29.9585
+        ]
+      },
+      "properties": {
+        "rank": 92,
+        "name": "Bourbon Street",
+        "category": "Entertainment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.9214,
+          45.9042
+        ]
+      },
+      "properties": {
+        "rank": 93,
+        "name": "Mount Katahdin",
+        "category": "Mountain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.3033,
+          44.2706
+        ]
+      },
+      "properties": {
+        "rank": 94,
+        "name": "Mount Washington",
+        "category": "Mountain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0377,
+          43.0962
+        ]
+      },
+      "properties": {
+        "rank": 95,
+        "name": "Niagara Falls State Park",
+        "category": "Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9799,
+          44.2795
+        ]
+      },
+      "properties": {
+        "rank": 96,
+        "name": "Lake Placid",
+        "category": "Scenic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.9498,
+          39.2097
+        ]
+      },
+      "properties": {
+        "rank": 97,
+        "name": "Aspen Snowmass",
+        "category": "Resort"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.8123,
+          37.9375
+        ]
+      },
+      "properties": {
+        "rank": 98,
+        "name": "Telluride",
+        "category": "Resort"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.7624,
+          43.4799
+        ]
+      },
+      "properties": {
+        "rank": 99,
+        "name": "Jackson Hole",
+        "category": "Resort"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.1926,
+          63.1148
+        ]
+      },
+      "properties": {
+        "rank": 100,
+        "name": "Mount McKinley Viewpoint",
+        "category": "Scenic"
+      }
+    }
+  ]
+}
