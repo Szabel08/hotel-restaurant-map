@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+    <style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    }
+
+    #map {
+    width: 100%;
+    height: 100vh;
+    }
+    </style>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet.photon.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="filters" style="
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:1000;
+    background:white;
+    padding:10px;
+    border-radius:6px;
+">
+    <label>City</label><br>
+    <input id="cityFilter" placeholder="e.g. New York"><br><br>
+    <label>State</label><br>
+    <select id="stateFilter">
+    <option value="">All states</option>
+    </select>
+    <br><br>
+    <label>
+    <input type="checkbox" id="filterHotel" checked>
+    Hotel
+    </label><br>
+
+    <label>
+    <input type="checkbox" id="filterRestaurant" checked>
+    Restaurant
+    </label>
+    <div class="filter-section">
+
+     <div id="typeToggle" style="cursor:pointer; font-weight:bold;">
+    ▶ Type
+    </div>
+
+    <div id="typeOptions" style="margin-left:10px; display:none;">
+    <!-- Type checkboxes will be inserted here dynamically -->
+    </div>
+
+    </div>
+</div>
+      <div id="map"></div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/L.Control.Layers.Tree.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.photon.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/Combined_us_layercombined_1.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+
+<script>
+    //Globals
+        //Icon Definition
+        var hotelIcon = L.icon({
+        iconUrl: 'icons/hotel.png',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+        });
+
+        var restaurantIcon = L.icon({
+        iconUrl: 'icons/restaurant.png',
+        iconSize: [26, 26],
+        iconAnchor: [13, 26],
+        popupAnchor: [0, -26]
+        });
+
+        var attractionIcons = {
+        Landmark: L.icon({
+        iconUrl: 'icons/landmark.png',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+        }),
+        Nature: L.icon({
+        iconUrl: 'icons/nature.png',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+        }),
+        Entertainment: L.icon({
+        iconUrl: 'icons/entertainment.png',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+        }),
+        Historic: L.icon({
+        iconUrl: 'icons/historic.png',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+        }),
+        default: L.icon({
+        iconUrl: 'icons/attraction_default.png',
+        iconSize: [26, 26],
+        iconAnchor: [13, 26],
+        popupAnchor: [0, -26]
+        })
+        };
+
+
+ // --- FILTER SYSTEM DATA ---
+ var allFeatures = json_Combined_us_layercombined_1.features;
+        (function populateStateDropdown() {
+        const select = document.getElementById('stateFilter');
+        const states = new Set();
+
+    allFeatures.forEach(feature => {
+        const s = feature.properties.State;
+        if (s && s.trim() !== '') {
+            states.add(s);
+        }
+    });
+
+    Array.from(states)
+        .sort((a, b) => a.localeCompare(b))
+        .forEach(state => {
+            const option = document.createElement('option');
+            option.value = state;
+            option.textContent = state;
+            select.appendChild(option);
+        });
+    })();
+
+        //type dropdown searching
+       (function populateTypeCheckboxes() {
+    const container = document.getElementById('typeOptions');
+
+    // Create sub-containers
+    const hotelSection = document.createElement('div');
+    const restaurantSection = document.createElement('div');
+
+    hotelSection.innerHTML = '<strong>Hotels</strong>';
+    restaurantSection.innerHTML = '<strong>Restaurants</strong>';
+
+    const hotelTypes = new Set();
+    const restaurantTypes = new Set();
+
+    function isHotelType(type) {
+        return /^[A-Z]/.test(type) && /\(.*\)/.test(type);
+    }
+
+    allFeatures.forEach(feature => {
+        const t = feature.properties.Type;
+        if (!t || t.trim() === '') return;
+
+        if (isHotelType(t)) {
+            hotelTypes.add(t);
+        } else {
+            restaurantTypes.add(t);
+        }
+    });
+
+    function addCheckbox(type, target) {
+        const label = document.createElement('label');
+        label.style.display = 'block';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = type;
+        checkbox.checked = true;
+        checkbox.className = 'type-filter';
+
+        checkbox.addEventListener('change', applyFilters);
+
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(' ' + type));
+        target.appendChild(label);
+    }
+
+    Array.from(hotelTypes).sort().forEach(t => addCheckbox(t, hotelSection));
+    Array.from(restaurantTypes).sort().forEach(t => addCheckbox(t, restaurantSection));
+
+    container.appendChild(hotelSection);
+    container.appendChild(document.createElement('br'));
+    container.appendChild(restaurantSection);
+})();
+
+
+        //var continues
+        var filteredLayer = L.layerGroup();
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString' || e.target.feature.geometry.type === 'MultiLineString') {
+              highlightLayer.setStyle({
+                color: 'rgba(255, 255, 0, 1.00)',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: 'rgba(255, 255, 0, 1.00)',
+                fillOpacity: 1
+              });
+            }
+        }
+        //Map creation
+        var map = L.map('map', {
+            zoomControl:false, maxZoom:28, minZoom:1
+        })
+   
+        // 🔹 Marker cluster group (global)
+    var markerCluster = L.markerClusterGroup({
+    chunkedLoading: true,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    });
+    var attractionsLayer = L.layerGroup();
+    var ATTRACTIONS_MIN_ZOOM = 8;
+     
+    // ───────── Load and add attractions layer ─────────
+    fetch('data/us_top_100_attractions.geojson')
+    .then(res => res.json())
+    .then(data => {
+        L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+                const type = feature.properties.category || 'default';
+                const icon = attractionIcons[type] || attractionIcons.default;
+
+                return L.marker(latlng, { icon: icon });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(
+                    '<strong>' + feature.properties.name + '</strong><br>' +
+                    feature.properties.city + ', ' +
+                    feature.properties.state
+                );
+            }
+        }).addTo(attractionsLayer);
+    });
+
+   
+    function updateAttractionsVisibility() {
+    if (map.getZoom() >= ATTRACTIONS_MIN_ZOOM) {
+        if (!map.hasLayer(attractionsLayer)) {
+            map.addLayer(attractionsLayer);
+        }
+    } else {
+        if (map.hasLayer(attractionsLayer)) {
+            map.removeLayer(attractionsLayer);
+        }
+    }
+    }
+
+map.on('zoomend', updateAttractionsVisibility);
+updateAttractionsVisibility(); // run once on load
+
+
+
+
+
+    map.addLayer(markerCluster);
+
+       map.fitBounds([
+        [-1.0520907465385554, -172.8838087737941],
+        [60.538591525597504, -31.977357090720446]
+        ]);
+
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        // remove popup's row if "visible-with-data"
+        function removeEmptyRowsFromPopupContent(content, feature) {
+         var tempDiv = document.createElement('div');
+         tempDiv.innerHTML = content;
+         var rows = tempDiv.querySelectorAll('tr');
+         for (var i = 0; i < rows.length; i++) {
+             var td = rows[i].querySelector('td.visible-with-data');
+             var key = td ? td.id : '';
+             if (td && td.classList.contains('visible-with-data') && feature.properties[key] == null) {
+                 rows[i].parentNode.removeChild(rows[i]);
+             }
+         }
+         return tempDiv.innerHTML;
+        }
+        // modify popup if contains media
+        function addClassToPopupIfMedia(content, popup) {
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+            var imgTd = tempDiv.querySelector('td img');
+            if (imgTd) {
+                var src = imgTd.getAttribute('src');
+                if (/\.(jpg|jpeg|png|gif|bmp|webp|avif)$/i.test(src)) {
+                    popup._contentNode.classList.add('media');
+                    setTimeout(function() {
+                        popup.update();
+                    }, 10);
+                } else if (/\.(mp3|wav|ogg|aac)$/i.test(src)) {
+                    var audio = document.createElement('audio');
+                    audio.controls = true;
+                    audio.src = src;
+                    imgTd.parentNode.replaceChild(audio, imgTd);
+                    popup._contentNode.classList.add('media');
+                    setTimeout(function() {
+                        popup.setContent(tempDiv.innerHTML);
+                        popup.update();
+                    }, 10);
+                } else if (/\.(mp4|webm|ogg|mov)$/i.test(src)) {
+                    var video = document.createElement('video');
+                    video.controls = true;
+                    video.src = src;
+                    video.style.width = "400px";
+                    video.style.height = "300px";
+                    video.style.maxHeight = "60vh";
+                    video.style.maxWidth = "60vw";
+                    imgTd.parentNode.replaceChild(video, imgTd);
+                    popup._contentNode.classList.add('media');
+                    // Aggiorna il popup quando il video carica i metadati
+                    video.addEventListener('loadedmetadata', function() {
+                        popup.update();
+                    });
+                    setTimeout(function() {
+                        popup.setContent(tempDiv.innerHTML);
+                        popup.update();
+                    }, 10);
+                } else {
+                    popup._contentNode.classList.remove('media');
+                }
+            } else {
+                popup._contentNode.classList.remove('media');
+            }
+        }
+function buildPopupContent(feature, layer) {
+    var popupContent = '<table>\
+        <tr>\
+            <td colspan="2"><strong>Name</strong><br />' +
+            (feature.properties['Name'] ?? '') +
+            '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Type</th>\
+            <td>' + (feature.properties['Type'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Link</th>\
+            <td>' + (feature.properties['Link']
+                ? '<a href="' + feature.properties['Link'] + '" target="_blank">Website</a>'
+                : '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Adress</th>\
+            <td>' + (feature.properties['Adress'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Maps</th>\
+            <td>' + (feature.properties['Maps']
+                ? '<a href="' + feature.properties['Maps'] + '" target="_blank">Open map</a>'
+                : '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Email</th>\
+            <td>' + (feature.properties['Email'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Phone</th>\
+            <td>' + (feature.properties['Phone'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Capacity</th>\
+            <td>' + (feature.properties['Capacity'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Private rooms</th>\
+            <td>' + (feature.properties['Private_rooms'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">City</th>\
+            <td>' + (feature.properties['City'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">State</th>\
+            <td>' + (feature.properties['State'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">County</th>\
+            <td>' + (feature.properties['County'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Postal Code</th>\
+            <td>' + (feature.properties['Postal_Code'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Restaurant / Hotel</th>\
+            <td>' + (feature.properties['Restaurant_Hotel'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Brand</th>\
+            <td>' + (feature.properties['Brand'] ?? '') + '</td>\
+        </tr>\
+        <tr>\
+            <th scope="row">Coast</th>\
+            <td>' + (feature.properties['Coast'] ?? '') + '</td>\
+        </tr>\
+    </table>';
+
+    var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+    layer.setPopupContent(content);
+    }
+
+function renderFilteredData(filters) {
+               markerCluster.clearLayers();
+
+
+        var bounds = [];
+        var cityBounds = [];
+
+        allFeatures.forEach(function (feature) {
+
+        // ───────── Hotel / Restaurant filter ─────────
+        const hrType = feature.properties.Restaurant_Hotel;
+
+        if (
+            (!filters.showHotel && hrType === "Hotel") ||
+            (!filters.showRestaurant && hrType === "Restaurant")
+        ) return;
+
+        // ───────── Type filter ─────────
+        if (filters.types && filters.types.length > 0) {
+            if (!filters.types.includes(feature.properties.Type)) return;
+        }
+        // ───────── State filter ─────────
+        if (filters.state && feature.properties.State !== filters.state) return;
+
+
+        // ───────── Create marker ─────────
+        var lat = feature.geometry.coordinates[1];
+        var lng = feature.geometry.coordinates[0];
+
+        const isHotel = feature.properties.Restaurant_Hotel === "Hotel";
+
+        var marker = L.marker(
+        [lat, lng],
+        {
+        icon: isHotel ? hotelIcon : restaurantIcon
+        }
+        );
+
+
+        // 🔑 Attach original qgis2web popup
+        pop_Combined_us_layercombined_1(feature, marker);
+
+       markerCluster.addLayer(marker);
+
+
+        // ───────── Collect bounds for visible points ─────────
+        bounds.push(marker.getLatLng());
+
+        // ───────── Collect bounds ONLY for city zoom ─────────
+        if (
+            filters.city &&
+            feature.properties.City &&
+            feature.properties.City.toLowerCase().includes(filters.city.toLowerCase())
+        ) {
+            cityBounds.push(marker.getLatLng());
+        }
+
+    });
+    // ───────── Zoom logic ─────────
+   if (cityBounds.length === 1) {
+    map.setView(cityBounds[0], 14, {
+        animate: true,
+        duration: 0.5
+    });
+
+} else if (cityBounds.length > 1) {
+    map.fitBounds(cityBounds, {
+        padding: [40, 40],
+        animate: true,
+        duration: 0.6
+    });
+
+} else if (bounds.length === 1) {
+    map.setView(bounds[0], 14, {
+        animate: true,
+        duration: 0.5
+    });
+
+} else if (bounds.length > 1) {
+    map.fitBounds(bounds, {
+        padding: [40, 40],
+        animate: true,
+        duration: 0.6
+    });
+}
+}
+        var zoomControl = L.control.zoom({
+            position: 'topleft'
+        }).addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            map.setMaxBounds(map.getBounds());
+            map.setMinZoom(map.getZoom());
+        }
+
+    // Base layer map
+    map.createPane('pane_CartoPositron_0');
+    map.getPane('pane_CartoPositron_0').style.zIndex = 400;
+
+    var layer_CartoPositron_0 = L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+        pane: 'pane_CartoPositron_0',
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap contributors',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }
+    );
+
+    map.addLayer(layer_CartoPositron_0);
+
+
+        function pop_Combined_us_layercombined_1(feature, layer) {
+    layer.bindPopup('Loading…', { maxHeight: 400 });
+
+    layer.on('popupopen', function () {
+        if (!layer._popupLoaded) {
+            buildPopupContent(feature, layer);
+            layer._popupLoaded = true;
+        }
+    });
+}
+
+
+        function style_Combined_us_layercombined_1_0(feature) {
+    const isHotel = feature.properties.Restaurant_Hotel === "Hotel";
+
+    return {
+        radius: isHotel ? 14 : 10,
+        color: '#222',
+        weight: 1,
+        fill: true,
+        fillOpacity: 0.9,
+        fillColor: isHotel ? '#1f78b4' : '#33a02c',
+        interactive: true
+    };
+
+}
+
+        map.createPane('pane_Combined_us_layercombined_1');
+        map.getPane('pane_Combined_us_layercombined_1').style.zIndex = 401;
+        map.getPane('pane_Combined_us_layercombined_1').style['mix-blend-mode'] = 'normal';
+        //var layer_Combined_us_layercombined_1 = new L.geoJson(json_Combined_us_layercombined_1, {
+            //attribution: '',
+            //interactive: true,
+            //dataVar: 'json_Combined_us_layercombined_1',
+            //layerName: 'layer_Combined_us_layercombined_1',
+            //pane: 'pane_Combined_us_layercombined_1',
+            //onEachFeature: pop_Combined_us_layercombined_1,
+            //pointToLayer: function (feature, latlng) {
+              //  var context = {
+                //    feature: feature,
+                  //  variables: {}
+                //};
+                //return L.circleMarker(latlng, style_Combined_us_layercombined_1_0(feature));
+            //},
+        //});
+        //bounds_group.addLayer(layer_Combined_us_layercombined_1);
+        //map.addLayer(layer_Combined_us_layercombined_1);
+    
+        const url = {"Nominatim OSM": "https://nominatim.openstreetmap.org/search?format=geojson&addressdetails=1&",
+        "France BAN": "https://api-adresse.data.gouv.fr/search/?"}
+        var photonControl = L.control.photon({
+            url: url["Nominatim OSM"],
+            feedbackLabel: '',
+            position: 'topleft',
+            includePosition: true,
+            initial: true,
+            // resultsHandler: myHandler,
+        }).addTo(map);
+        photonControl._container.childNodes[0].style.borderRadius="10px"
+        // Create a variable to store the geoJSON data
+        var x = null;
+        // Create a variable to store the marker
+        var marker = null;
+        // Add an event listener to the Photon control to create a marker from the returned geoJSON data
+        var z = null;
+        photonControl.on('selected', function(e) {
+            console.log(photonControl.search.resultsContainer);
+            if (x != null) {
+                map.removeLayer(obj3.marker);
+                map.removeLayer(x);
+            }
+            obj2.gcd = e.choice;
+            x = L.geoJSON(obj2.gcd).addTo(map);
+            var label = typeof obj2.gcd.properties.label === 'undefined' ? obj2.gcd.properties.display_name : obj2.gcd.properties.label;
+            obj3.marker = L.marker(x.getLayers()[0].getLatLng()).bindPopup(label).addTo(map);
+            map.setView(x.getLayers()[0].getLatLng(), 17);
+            z = typeof e.choice.properties.label === 'undefined'? e.choice.properties.display_name : e.choice.properties.label;
+            console.log(e);
+            e.target.input.value = z;
+        });
+        var search = document.getElementsByClassName("leaflet-photon leaflet-control")[0];
+        search.classList.add("leaflet-control-search")
+        search.style.display = "flex";
+        search.style.backgroundColor="rgba(255,255,255,0.5)" 
+
+        // Create the new button element
+        var button = document.createElement("div");
+        button.id = "gcd-button-control";
+        button.className = "gcd-gl-btn fa fa-search search-button";
+
+        // Insert the button at the beginning of the search control
+        search.insertBefore(button, search.firstChild);
+        last = search.lastChild;
+        last.style.display = "none";
+        button.addEventListener("click", function (e) {
+            if (last.style.display === "none") {
+                last.style.display = "block";
+            } else {
+                last.style.display = "none";
+            }
+        });
+    var overlaysTree = [
+    {label: "Top US Attractions", layer: attractionsLayer },
+    { label: "Carto Positron", layer: layer_CartoPositron_0 }
+    ];
+
+        var lay = L.control.layers.tree(
+    null,
+    overlaysTree,
+    {
+        collapsed: true,
+        position: 'bottomright'
+    }
+    );
+
+lay.addTo(map);
+
+        lay.addTo(map);
+        setBounds();
+        //map.addControl(new L.Control.Search({
+            //layer: layer_Combined_us_layercombined_1,
+            //initial: false,
+            //hideMarkerOnCollapse: true,
+            //propertyName: 'City'}));
+        
+        var buttons = document.getElementsByClassName('search-button');
+        if (buttons.length > 0) {
+        buttons[0].className += ' fa fa-binoculars';
+        }
+
+function applyFilters() {
+    const city = document.getElementById('cityFilter').value.trim();
+    const state = document.getElementById('stateFilter').value;
+
+    const showHotel = document.getElementById('filterHotel').checked;
+    const showRestaurant = document.getElementById('filterRestaurant').checked;
+
+    const selectedTypes = Array.from(
+        document.querySelectorAll('.type-filter:checked')
+    ).map(cb => cb.value);
+
+    renderFilteredData({
+        city: city || null,
+        state: state || null,
+        showHotel: showHotel,
+        showRestaurant: showRestaurant,
+        types: selectedTypes
+    });
+}
+
+
+    
+    let cityFilterTimeout;
+
+    document.getElementById('cityFilter').addEventListener('input', function () {
+    clearTimeout(cityFilterTimeout);
+    cityFilterTimeout = setTimeout(applyFilters, 300);
+    });
+
+
+    document.getElementById('stateFilter').addEventListener('change', applyFilters);
+
+    document.getElementById('filterHotel').addEventListener('change', applyFilters);
+    document.getElementById('filterRestaurant').addEventListener('change', applyFilters);
+    
+    document.getElementById('typeToggle').addEventListener('click', function () {
+    const box = document.getElementById('typeOptions');
+    const open = box.style.display === 'block';
+
+    box.style.display = open ? 'none' : 'block';
+    this.textContent = (open ? '▶' : '▼') + ' Type';
+    });
+
+
+    applyFilters();
+
+
+    
+       </script>
+    
+  
+    </body>
+</html>
